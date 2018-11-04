@@ -1,0 +1,24 @@
+<html ng-app="phonecatApp">
+<head>
+<script src="bower_components/angular/angular.js"></script>
+<script src="myscript.js"></script>
+<link rel="stylesheet" type="text/css" href="loginstylesheet.css">
+</head>
+<body ng-controller="PhoneListController">
+    <div ng-init="mySwitch=false" class="loginbox" style=" transform: translate(-50%,-46%); width:400;height:550px;">
+    <img src="usericon.png" class="icon" style="top:-35px;">
+    <h1>create Account</h1>
+    <form>
+        <p>First name</p>
+        <input type="text" placeholder="Enter First name">
+        <p>Last name</p>
+        <input type="text" placeholder="Enter Last name">
+        <p>Create Password</p>
+        <input type="password" placeholder="Set Password">
+        <p>Re type Password</p>
+        <input type="password" placeholder="Re enter Password">
+        <input type="submit" value="login">
+        </form>
+    </div>
+</body>
+</html>

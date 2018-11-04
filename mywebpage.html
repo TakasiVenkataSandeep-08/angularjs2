@@ -1,0 +1,72 @@
+<html ng-app="phonecatApp">
+<head>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="myscript.js"></script>
+  <link rel="stylesheet" type="text/css"href="mystyleshett.css">
+</head>
+<body ng-controller="PhoneListController">
+<!--sort by: <select ng-model="columnsort">
+            <option value="+name">name asc</option>
+            <option value="+dateofbirth">Date of birth</option>
+            <option value="+gender">Gender</option>
+            <option value="-salary">salary</option>          
+</select>
+<br/><br/> -->
+<ul>
+        <li><a class="z" href="#"><img src="freepik.jpg" height="30"></a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+    </div>
+</li>
+        <li><input class="y" type="text" placeholder="search for name & gender" ng-model="searchvalue"/></li>
+        <li><a href="loginpage.html" class="log">Login</a></li>
+    </ul>
+<!--include content of another html file as it is<p>{{message}}</p>-->
+<div ng-include="'dummyhtml.html'"></div>
+<!--to know exact url of our webpage <p>my url is: {{myurl}}</p>-->
+<p>{{fname}}</p>
+<p>{{tym}}</p>
+<p>the hexadeciaml value of 255 is: {{hex}}</p>
+<input  type="checkbox" ng-model="x"/> hide salary<br>
+<table>
+    <thead>
+        <tr>
+            <th>S.no</th>
+            <th ng-click="sortdata('name')">Name <div ng-class="getsortclass('name')"></div></th>
+            <th ng-click="sortdata('dateofbirth')">Date of birth <div ng-class="getsortclass('dateofbirth')"></div></th>
+            <th ng-click="sortdata('gender')">Gender <div ng-class="getsortclass('gender')"></div></th>
+            <th ng-hide="x" ng-click="sortdata('salary')">Salary <div ng-class="getsortclass('salary')"></div></th>
+          <!-- toshow dummy hash symbol   <th ng-show="x" ng-click="sortdata('salary')">Salary <div ng-class="getsortclass('salary')"></div></th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="employee in employees |orderBy:columnsort:reversesort | filter:search">
+            <td>{{$index + 1}}</td>
+            <td>{{employee.name }}</td>
+            <td>{{employee.dateofbirth | date:"dd//MM//yyyy"}}</td>
+            <td>{{employee.gender | Gender}}</td>
+            <td ng-hide="x">{{employee.salary | myfilter}}</td>
+            <!--toshow dummy hash symbol  <td ng-show="x">####</td> -->
+        </tr>
+    </tbody>
+</table>
+<div ng-app="" ng-init="mySwitch=false">
+        
+        <p>
+        <input type="checkbox" ng-model="mySwitch"/>agree to my terms and conditions
+        </p>
+        <p>
+         <button ng-disabled="!mySwitch">submit</button>
+        </p>
+      <!--  <p>
+        {{ mySwitch }}
+        </p>-->
+        </div> 
+</body>
+</html>
