@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="my_app">
+  <head>
+   <script src="angular.js"></script>
+    <script>var  my_app = angular.module('my_app',[])
+                    .controller('my_controller',function($scope)
+{
+$scope.x="none";
+$scope.food="";
+$scope.message=" ";
+var j=0;
+$scope.choose = function(food)
+{
+    var strc = new Array();
+    var strCopy = food.split(',');
+    for(i=0;i<strCopy.length;i++)
+    {
+        if(strCopy[i]!="") /*,, and , , will not be counted*/
+        {
+           strc.push(strCopy[i]);
+           j++;
+        }
+    }
+    if(food=="")
+    {
+    $scope.message="Please enter data first";
+    $scope.x="red";
+    }
+    else if(strc.length<=3)
+    {
+    $scope.message="enjoy..!";
+    $scope.x="green";
+    }
+    else if(strc.length>=3)
+    {
+    $scope.message="Too much..!";
+    $scope.x="green";
+    }
+}
+});
+    </script>
+    <style>
+      body{
+    background-color:black;
+    background-position: center;
+    font-family: sans-serif;
+    background-size: 100% 605%;
+    background-repeat: no-repeat;
+    
+    }
+div{
+    border:1px solid gray;
+    border-radius: 1cm;
+    color: wheat;
+    width: 4cm;
+    text-align: center;
+    cursor: pointer;
+}
+input.none /*changes in the border color are implemented*/
+{
+    border: 1px solid rgb(12, 74, 116);
+    background:transparent;
+    outline:none;
+    height:20px;
+    color: wheat;
+    font-size: 14px;
+}
+input.red
+{
+    border: 1px solid red;
+    background:transparent;
+    outline:none;
+    height:20px;
+    color: wheat;
+    font-size: 14px;
+}
+input.green
+{
+    border: 1px solid green;
+    background:transparent;
+    outline:none;
+    height:20px;
+    color: wheat;
+    font-size: 14px;
+}
+/*changes in colour of the message also implemented*/
+p.red{
+    color:red;
+}
+p.green{
+    color:green;
+}
+      </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-controller="my_controller">
+    <h1 style="color:antiquewhite; ">choose your food to eat</h1><br>
+    <!--we will not consider ,, and , , in the input-->
+      <input type="text" class="{{x}}" placeholder="Enter food to eat" ng-model="food"><br><br>
+      <div ng-click="choose(food)">check if too much</div><br>
+        <p class="{{x}}">{{message}}</p>
+  </body>
+</html>
+
