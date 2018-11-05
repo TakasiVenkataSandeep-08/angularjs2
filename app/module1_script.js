@@ -1,4 +1,4 @@
-var  cat = angular.module('my_app',[])
+var  my_app = angular.module('my_app',[])
                     .controller('my_controller',function($scope)
 {
 $scope.x="none";
